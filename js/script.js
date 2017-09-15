@@ -1,5 +1,4 @@
 
-var randomNumber;
 var quotesBank = [
   {
     quote: "Effort is only effort when it begins to hurt.",
@@ -31,14 +30,17 @@ var quotesBank = [
   },
 ]
 
-function randomQuote () {
-  var randomNumber = Math.floor( Math.random() * quotesBank.length );
-  return randomNumber;
+function getRandomQuote () {
+  var randomquoteNumber = Math.floor( Math.random() * quotesBank.length );
+  return randomquoteNumber;
 }
-var num = randomQuote();
+var quoteNumber = getRandomQuote();
 
-document.write( "<p>&#10077;" + quotesBank[num].quote + "&#10078;</p>" + quotesBank[num].source + ', <em>' + quotesBank[num].citation + '</em>, ' + quotesBank[num].year);
-randomQuote();
+document.write( "<p>&#10077;" + quotesBank[quoteNumber].quote + "&#10078;</p>" + quotesBank[quoteNumber].source + ', <em>' + quotesBank[quoteNumber].citation + '</em>, ' + quotesBank[quoteNumber].year);
+
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
+function printQuote () {
+  document.getElementById( 'quote-box' ).innerHTML;
+}
 // document.getElementById('loadQuote').addEventListener("click", printQuote, false);
