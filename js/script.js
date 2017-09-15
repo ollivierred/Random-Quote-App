@@ -1,6 +1,6 @@
 
-var randomNumber = Math.floor( Math.random() * quotes.length);
-var quotes = [
+var randomNumber;
+var quotesBank = [
   {
     quote: "Effort is only effort when it begins to hurt.",
     source: "José Ortega y Gasset",
@@ -8,7 +8,7 @@ var quotes = [
     year: "1949"
   },
   {
-    quote: "A mind that is stretched by a new experience can never go back to its old dimensions."
+    quote: "A mind that is stretched by a new experience can never go back to its old dimensions.",
     source: "Oliver Wendell Holmes",
     citation: "The Autocrat of the Breakfast Table",
     year: "1858"
@@ -30,6 +30,15 @@ var quotes = [
     year: "1982"
   },
 ]
+
+function randomQuote () {
+  var randomNumber = Math.floor( Math.random() * quotesBank.length );
+  return randomNumber;
+}
+var num = randomQuote();
+
+document.write( "<p>&#10077;" + quotesBank[num].quote + "&#10078;</p>" + quotesBank[num].source + ', <em>' + quotesBank[num].citation + '</em>, ' + quotesBank[num].year);
+randomQuote();
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
