@@ -1,5 +1,27 @@
 var randQuoteIndex;
 var quotes = [
+  // {
+  //   quote: "",
+  //   source: "",
+  //   citation: "",
+  //   year: ""
+  // },
+  {
+    quote: "To build a mighty tower, you must bet all of your effort and potential to it.",
+    source: "Effort Anonymous",
+  },
+  {
+    quote: "There has never yet been a man in our history who led a life of ease whose name is worth remembering.",
+    source: "Theodore Roosevelt",
+  },
+  {
+    quote: "Inscribe all human effort with one word, artistry's haunting curse, the Incomplete!",
+    source: "Robert Browning",
+  },
+  {
+    quote: "It is easier to go down a hill than up, but the view is from the top.",
+    source: "Arnold Bennett",
+  },
   {
     quote: "Effort is only effort when it begins to hurt.",
     source: "José Ortega y Gasset",
@@ -17,17 +39,9 @@ var quotes = [
     source: "Denis Waitley"
   },
   {
-    quote: "The person who tries to live alone will not succeed as a human being. His heart withers if it does not answer another heart. His mind shrinks away if he hears only the echoes of his own thoughts and finds no other inspiration.",
-    source: "Pearl S. Buck",
-    citation: "To My Daughters, With Love",
-    year: "1967"
-  },
-  {
-    quote: "They who lack talent expect things to happen without effort. They ascribe failure to a lack of inspiration or ability, or to misfortune, rather than to insufficient application. At the core of every true talent there is an awareness of the difficulties inherent in any achievement, and the confidence that by persistence and patience something worthwhile will be realized. Thus talent is a species of vigor.",
-    source: "Eric Hoffer",
-    citation: "Harper & Row, p. 67",
-    year: "1982"
-  },
+    quote: "In the past, those who foolishly sought power by riding on the back of the tiger ended up inside.",
+    source: "John F. Kennedy",
+  }
 ]
 
 // event listener to respond to "Show another quote" button clicks
@@ -68,12 +82,11 @@ function quoteString () {
   if ( randQuote.citation === undefined || randQuote.year === undefined ) {
     return message = '<p class="quote">'+ randQuote.quote + '</p>' + '<p class="source">'+ randQuote.source + '</p>';
   } else {
-    var message = '<p class="quote">'+ randQuote.quote + '</p>' +
+    return message = '<p class="quote">'+ randQuote.quote + '</p>' +
                   '<p class="source">'+ randQuote.source +
                     '<span class="citation">'+ randQuote.citation + '</span>' +
                     '<span class="year">'+ randQuote.year + '</span>' +
                   '</p>';
-    return message;
   }
 
 }
