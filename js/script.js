@@ -1,4 +1,10 @@
-
+var randQuote;
+var randQuoteSource;
+var randQuoteCitation;
+var randQuoteYear;
+var quotesAmount;
+var randQuoteNum;
+var message;
 var quotes = [
   {
     quote: "Effort is only effort when it begins to hurt.",
@@ -30,23 +36,32 @@ var quotes = [
   },
 ]
 
-
-
-var getRandomNum = Math.floor( Math.random() * maxQuotes );
-var maxQuotes = quotes.length;
-
-for ( var count = 0; count <=maxQuotes; count +=1 ) {
-  var randQuote = quotes[count].quote;
-  var randQuoteSource = quotes[count].source;
-  var randQuoteCitation = quotes[count].citation;
-  var randQuoteYear = quotes[count].year;
+var quotesAmount = quotes.length
+function getRandNum() {
+  var randNum = Math.floor( Math.random() * quotesAmount );
+  return randNum;
 }
+
+function getRandomQuote() {
+  for ( var i=0; i < quotesAmount; i++ ) {
+    randQuoteNum = getRandNum();
+    randQuote = quotes[randQuoteNum].quote;
+    randQuoteSource = quotes[randQuoteNum].source;
+    randQuoteCitation = quotes[randQuoteNum].citation;
+    randQuoteYear = quotes[randQuoteNum].year;
+
+    var message = '<p class="quote">'+ randQuote + '</p>' +
+                  '<p class="source">'+ randQuoteSource +
+                    '<span class="citation">'+ randQuoteCitation + '</span>' +
+                    '<span class="year">'+ randQuoteYear + '</span>' +
+                  '</p>'
+  }
+  return message;
+}
+
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-
 document.getElementById( 'loadQuote' ).addEventListener( "click", function printQuote() {
-  document.querySelector('.quote').innerHTML = randQuote;
-  document.querySelector('.source').innerHTML = randQuoteSource;
-  document.querySelector('.citation').innerHTML = randQuoteCitation;
-  document.querySelector('.year').innerHTML = randQuoteYear;
+  message = getRandomQuote();
+  document.querySelector('#quote-box').innerHTML = message;
 });
