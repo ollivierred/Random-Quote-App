@@ -1,5 +1,5 @@
 
-var quotesBank = [
+var quotes = [
   {
     quote: "Effort is only effort when it begins to hurt.",
     source: "José Ortega y Gasset",
@@ -30,18 +30,23 @@ var quotesBank = [
   },
 ]
 
-function getRandomQuote () {
-  var randomquoteNumber = Math.floor( Math.random() * quotesBank.length );
-  return randomquoteNumber;
-}
-var quoteNumber = getRandomQuote();
 
+
+var getRandomNum = Math.floor( Math.random() * maxQuotes );
+var maxQuotes = quotes.length;
+
+for ( var count = 0; count <=maxQuotes; count +=1 ) {
+  var randQuote = quotes[count].quote;
+  var randQuoteSource = quotes[count].source;
+  var randQuoteCitation = quotes[count].citation;
+  var randQuoteYear = quotes[count].year;
+}
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 
 document.getElementById( 'loadQuote' ).addEventListener( "click", function printQuote() {
-  document.querySelector('.quote').innerHTML = quotesBank[quoteNumber].quote;
-  document.querySelector('.source').innerHTML = quotesBank[quoteNumber].source;
-  document.querySelector('.citation').innerHTML = quotesBank[quoteNumber].citation;
-  document.querySelector('.year').innerHTML = quotesBank[quoteNumber].year;
+  document.querySelector('.quote').innerHTML = randQuote;
+  document.querySelector('.source').innerHTML = randQuoteSource;
+  document.querySelector('.citation').innerHTML = randQuoteCitation;
+  document.querySelector('.year').innerHTML = randQuoteYear;
 });
