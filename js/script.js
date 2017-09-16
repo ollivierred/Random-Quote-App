@@ -36,11 +36,12 @@ function getRandomQuote () {
 }
 var quoteNumber = getRandomQuote();
 
-document.write( "<p>&#10077;" + quotesBank[quoteNumber].quote + "&#10078;</p>" + quotesBank[quoteNumber].source + ', <em>' + quotesBank[quoteNumber].citation + '</em>, ' + quotesBank[quoteNumber].year);
-
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-function printQuote () {
-  document.getElementById( 'quote-box' ).innerHTML;
-}
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+document.getElementById( 'loadQuote' ).addEventListener( "click", function printQuote() {
+  document.querySelector('.quote').innerHTML = quotesBank[quoteNumber].quote;
+  document.querySelector('.source').innerHTML = quotesBank[quoteNumber].source;
+  document.querySelector('.citation').innerHTML = quotesBank[quoteNumber].citation;
+  document.querySelector('.year').innerHTML = quotesBank[quoteNumber].year;
+});

@@ -5,10 +5,12 @@ body {
   font-family: 'Playfair Display', serif;
 }
 #quote-box {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  right: 10%;
+  /*position: absolute;*/
+  padding-top: 20%;
+  padding-bottom: 5%;
+  /*left: 10%;*/
+  /*right: 10%;*/
+  margin: 0 auto;
   width: 80%;
   line-height: .5;
 }
@@ -58,12 +60,12 @@ body {
 }
 
 #loadQuote {
-  position: fixed;
+  /*position: absolute;*/
   width: 12em;
-  display: inline-block;
-  left: 50%;
-  margin-left: -6em;
-  bottom: 150px;
+  display: block;
+  /*left: 50%;*/
+  margin: 0 auto;
+  /*bottom: 150px;*/
   border-radius: 4px;
   border: 2px solid #fff;
   color: #fff;
