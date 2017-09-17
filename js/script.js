@@ -54,11 +54,13 @@ document.getElementById( 'loadQuote' ).addEventListener( "click", function print
 var previousNum = []
 var quotesLength = quotes.length;
 
+//Generates the random index number
 function getRandomIndex() {
   var randIndex = Math.floor( Math.random() * quotesLength );
   return randIndex;
 }
 
+// This function will generate the random rbg color value, which will be used to change the background color
 function getRandomColor() {
   var red = Math.floor( Math.random() * 256 );
   var green = Math.floor( Math.random() * 256 );
@@ -73,10 +75,11 @@ function getRandomQuote() {
     /* In this part of the fuction, the quote and all its contents are stored in a new varible called "randQuote". Using the "getRandNum" function, a random whole number is generated, then its returned value is placed into the quotes array index. Thus creating random index numbers / random quotes.  */
     randQuote = quotes[randQuoteIndex];
     return randQuote;
-    // Using the dot dot object notation, the quote stored in randQuote and all its values can now be accessed.
+    // Using the dot object notation, the quote stored in randQuote and all its values can now be accessed.
     }
 }
 
+//Assembles the contents of the stored quote into a string, and stores it in message. Also checkes if the qoute has citation and year.
 function quoteString () {
   var randQuote = getRandomQuote();
   if ( randQuote.citation === undefined || randQuote.year === undefined ) {
