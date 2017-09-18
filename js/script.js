@@ -44,6 +44,7 @@ var quotes = [
 
 var randQuoteIndex;
 var qLength = quotes.length;
+var qString;
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
@@ -74,7 +75,15 @@ function getRandomQuote() {
 //Assembles the contents of the stored quote into a string, and stores it in message. Also checkes if the qoute has citation and year.
 function quoteString () {
   var newIndex = getRandomQuote();
-  var qString =  '<p class="quote">'+ newIndex.quote + '</p>' +
-                    '<p class="source">'+ newIndex.source + '<span class="citation">'+ newIndex.citation + '</span><span class="year">'+ newIndex.year + '</span></p>';
+
+  if (newIndex.citation === "" && newIndex.year === "") {
+    qString = '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '</p>';
+  } else if (newIndex.citation === "") {
+    qString =  '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '<span class="year">'+ newIndex.year + '</span></p>';
+  } else if (newIndex.year === "") {
+    qString = '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '<span class="year">'+ newIndex.citationa +'</span></p>';
+  } else {
+    qString = '<p class="quote">'+newIndex.quote+'</p>'+'<p class="source">'+newIndex.source+'<span class="citation">'+ newIndex.citation+'</span>'+'<span class="year">'+ newIndex.year+'</span></p>';
+  }
   return qString;
 }
