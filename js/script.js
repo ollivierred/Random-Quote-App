@@ -1,5 +1,27 @@
+/*
+Project One: Random Quote Generator
+Course: Teamtreehouse Techdegree
+*/
 
-var quotesBank = [
+var quotes = [
+  {
+    quote: "To build a mighty tower, you must bet all of your effort and potential to it.",
+    source: "Effort Anonymous",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "There has never yet been a man in our history who led a life of ease whose name is worth remembering.",
+    source: "Theodore Roosevelt",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "It is easier to go down a hill than up, but the view is from the top.",
+    source: "Arnold Bennett",
+    citation: "",
+    year: ""
+  },
   {
     quote: "Effort is only effort when it begins to hurt.",
     source: "José Ortega y Gasset",
@@ -13,34 +35,55 @@ var quotesBank = [
     year: "1858"
   },
   {
-    quote: "Success is almost totally dependent upon drive and persistence. The extra energy required to make another effort or try another approach is the secret of winning.",
-    source: "Denis Waitley"
-  },
-  {
-    quote: "The person who tries to live alone will not succeed as a human being. His heart withers if it does not answer another heart. His mind shrinks away if he hears only the echoes of his own thoughts and finds no other inspiration.",
-    source: "Pearl S. Buck",
-    citation: "To My Daughters, With Love",
-    year: "1967"
-  },
-  {
-    quote: "They who lack talent expect things to happen without effort. They ascribe failure to a lack of inspiration or ability, or to misfortune, rather than to insufficient application. At the core of every true talent there is an awareness of the difficulties inherent in any achievement, and the confidence that by persistence and patience something worthwhile will be realized. Thus talent is a species of vigor.",
-    source: "Eric Hoffer",
-    citation: "Harper & Row, p. 67",
-    year: "1982"
-  },
+    quote: "In the past, those who foolishly sought power by riding on the back of the tiger ended up inside.",
+    source: "John F. Kennedy",
+    citation: "",
+    year: ""
+  }
 ]
 
-function getRandomQuote () {
-  var randomquoteNumber = Math.floor( Math.random() * quotesBank.length );
-  return randomquoteNumber;
-}
-var quoteNumber = getRandomQuote();
-
-document.write( "<p>&#10077;" + quotesBank[quoteNumber].quote + "&#10078;</p>" + quotesBank[quoteNumber].source + ', <em>' + quotesBank[quoteNumber].citation + '</em>, ' + quotesBank[quoteNumber].year);
+var randQuoteIndex;
+var qLength = quotes.length;
+var qString;
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-function printQuote () {
-  document.getElementById( 'quote-box' ).innerHTML;
+document.getElementById( 'loadQuote' ).addEventListener( "click", function printQuote(){
+  document.getElementById('quote-box').innerHTML = quoteString();
+});
+
+// This function will generate the random rbg color value, which will be used to change the background color
+function getRandomColor() {
+  var red = Math.floor( Math.random() * 256 );
+  var green = Math.floor( Math.random() * 256 );
+  var blue = Math.floor( Math.random() * 256 );
+  var randColor = red + green + blue;
+  // return randColor;
 }
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+//Generates the random index number
+function getRandomIndex() {
+  return Math.floor( Math.random() * qLength );
+}
+
+function getRandomQuote() {
+  var qIndex = getRandomIndex();
+  randIndex = quotes[qIndex];
+  return randIndex;
+}
+
+//Assembles the contents of the stored quote into a string, and stores it in message. Also checkes if the qoute has citation and year.
+function quoteString () {
+  var newIndex = getRandomQuote();
+
+  if (newIndex.citation === "" && newIndex.year === "") {
+    qString = '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '</p>';
+  } else if (newIndex.citation === "") {
+    qString =  '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '<span class="year">'+ newIndex.year + '</span></p>';
+  } else if (newIndex.year === "") {
+    qString = '<p class="quote">'+ newIndex.quote + '</p>' + '<p class="source">'+ newIndex.source + '<span class="year">'+ newIndex.citationa +'</span></p>';
+  } else {
+    qString = '<p class="quote">'+newIndex.quote+'</p>'+'<p class="source">'+newIndex.source+'<span class="citation">'+ newIndex.citation+'</span>'+'<span class="year">'+ newIndex.year+'</span></p>';
+  }
+  return qString;
+}
